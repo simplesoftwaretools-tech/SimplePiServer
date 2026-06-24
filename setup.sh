@@ -2,12 +2,15 @@
 #setup.sh
 
 sudo apt update
-sudo apt install nginx -y
+sudo apt install nginx python3-pip python3-venv -y
 sudo systemctl start nginx
 sudo systemctl enable nginx
-sudo apt install python3-pip python3-venv -y
-cd myapp
+
+DIR="$(cd "$(dirname "$0")" && pwd)"
+cd "$DIR/serverApp"
+
 python3 -m venv venv
 source venv/bin/activate
 pip install fastapi uvicorn python-multipart aiofiles
-uvicorn main.py:app --host 0.0.0.0 --port 8000
+
+uvicorn main:app --host 0.0.0.0 --port 8000
