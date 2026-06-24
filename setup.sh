@@ -8,8 +8,8 @@ sudo systemctl enable nginx
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
 
-python3 -m venv "$SCRIPT_DIR/venv"
-source "$SCRIPT_DIR/venv/bin/activate"
+python3 -m venv "$DIR/venv"
+source "$DIR/venv/bin/activate"
 pip install fastapi uvicorn python-multipart aiofiles
 
 cd "$DIR/serverApp"
